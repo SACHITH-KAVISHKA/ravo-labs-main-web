@@ -132,13 +132,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onSelectProduct, onOpenD
             className="flex items-center whitespace-nowrap shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E8B45] rounded-lg py-0.5"
             aria-label="Ravo Labs Homepage"
           >
-            <div className="rounded-lg bg-white/95 dark:bg-white px-2 py-1 shadow-2xs inline-flex items-center">
-              <img
-                src="/assets/aistudio/WhatsApp_Image_2026-10-16_at_4.08.42_PM_0b82b704.jpeg"
-                alt="Ravo Labs"
-                className="h-8 sm:h-9 w-auto object-contain"
-              />
-            </div>
+            <img
+              src="/assets/aistudio/ravoLabs Green Bubble Logo.png"
+              alt="Ravo Labs"
+              className="h-11 sm:h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Zone 2: Center Navigation Links with Products Dropdown */}
@@ -309,13 +307,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ onSelectProduct, onOpenD
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-5 border-b border-[#E4E9E1] dark:border-[#1E293B]">
                 <div className="flex items-center">
-                  <div className="rounded-lg bg-white/95 dark:bg-white px-2 py-1 shadow-2xs inline-flex items-center">
-                    <img
-                      src="/assets/aistudio/WhatsApp_Image_2026-10-16_at_4.08.42_PM_0b82b704.jpeg"
-                      alt="Ravo Labs"
-                      className="h-8 w-auto object-contain"
-                    />
-                  </div>
+                  <img
+                    src="/assets/aistudio/ravoLabs Green Bubble Logo.png"
+                    alt="Ravo Labs"
+                    className="h-11 w-auto object-contain"
+                  />
                 </div>
                 <button
                   onClick={() => {

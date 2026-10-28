@@ -5,8 +5,6 @@ import {
   ShoppingBag,
   ArrowRight,
   Sparkles,
-  Play,
-  Pause,
   CheckCircle2,
   Calendar,
   Layers,
@@ -20,6 +18,8 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import { HRDashboardMockup } from './dashboards/HRDashboardMockup';
 import { FuelDashboardMockup } from './dashboards/FuelDashboardMockup';
 import { POSDashboardMockup } from './dashboards/POSDashboardMockup';
+
+const PRODUCT_ORDER: ProductId[] = ['hr', 'fuel', 'pos'];
 
 interface ProductHeroProps {
   activeProductId: ProductId;
@@ -72,9 +72,8 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
     }, PROGRESS_INTERVAL);
 
     autoplayTimerRef.current = setTimeout(() => {
-      const order: ProductId[] = ['hr', 'fuel', 'pos'];
-      const nextIndex = (order.indexOf(activeProductId) + 1) % order.length;
-      handleProductChange(order[nextIndex]);
+      const nextIndex = (PRODUCT_ORDER.indexOf(activeProductId) + 1) % PRODUCT_ORDER.length;
+      handleProductChange(PRODUCT_ORDER[nextIndex]);
     }, AUTOPLAY_DURATION);
 
     return () => {
@@ -189,42 +188,183 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ========================================================= */}
-        {/* CENTRAL HERO PIECE: THE THREE-PRODUCT COMMAND DOCK        */}
+        {/* 2-COLUMN SPLIT: STORYTELLING & REALISTIC DASHBOARD VIEW   */}
         {/* ========================================================= */}
-        <div className="mb-8 lg:mb-12">
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <div className="flex items-center gap-2 min-w-0">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 truncate">
-                Central Product Console
-              </span>
-              <span className="hidden sm:inline text-[11px] text-neutral-400">·</span>
-              <span className="hidden sm:inline text-[11px] text-neutral-500 font-mono">
-                Click any product to switch preview
-              </span>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Headline, Narrative, CTAs, Benefits (5 cols) */}
+          {/* All products are stacked in one grid cell so the hero keeps the height of the tallest one */}
+          <div className="lg:col-span-5 grid">
+            {PRODUCT_ORDER.map((id) => {
+              const product = PRODUCTS_CONFIG[id];
+              const isShown = id === activeProductId;
+              return (
+                <div
+                  key={id}
+                  aria-hidden={!isShown}
+                  inert={!isShown}
+                  className={`[grid-area:1/1] space-y-6 transition-all duration-300 ease-out ${
+                    !isShown
+                      ? 'invisible opacity-0'
+                      : isTransitioning
+                      ? 'opacity-70 translate-y-1'
+                      : 'opacity-100 translate-y-0'
+                  }`}
+                >
+                {/* Dynamic Product Eyebrow */}
+                <div
+                  className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-semibold tracking-wide border uppercase transition-all duration-300 backdrop-blur-sm shadow-xs ${theme.eyebrowBg} ${theme.eyebrowColor}`}
+                >
+                  <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                  <span>{product.eyebrow}</span>
+                </div>
 
-            {/* Autoplay & Control Pill */}
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={() => setIsAutoplay(!isAutoplay)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 transition-colors text-neutral-600 dark:text-neutral-300"
-                aria-label={isAutoplay ? 'Pause auto-cycling between products' : 'Resume auto-cycling between products'}
-              >
-                {isAutoplay ? (
-                  <>
-                    <Pause className="w-3 h-3 text-neutral-500" />
-                    <span>Auto-cycling (8s)</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-3 h-3 text-neutral-500" />
-                    <span>Paused</span>
-                  </>
-                )}
-              </button>
-            </div>
+                {/* Main Headline */}
+                <h1
+                  className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.08] transition-all duration-300 ${theme.headlineColor}`}
+                  style={{ textWrap: 'balance' }}
+                >
+                  {product.headline}
+                </h1>
+
+                {/* Description */}
+                <p className={`text-base sm:text-lg leading-relaxed transition-all duration-300 ${theme.descColor}`}>
+                  {product.description}
+                </p>
+
+                {/* CTAs */}
+                <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onExploreProduct
+                        ? onExploreProduct(id)
+                        : onSelectProduct(id)
+                    }
+                    className={`group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm transition-all active:scale-[0.98] whitespace-nowrap cursor-pointer ${theme.primaryBtn}`}
+                  >
+                    <span>{product.primaryCta}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-150" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenDemo(id)}
+                    className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold border transition-all hover:shadow-xs active:scale-[0.98] whitespace-nowrap cursor-pointer ${theme.secondaryBtn}`}
+                  >
+                    <Calendar className="w-4 h-4 opacity-75" />
+                    <span>{product.secondaryCta}</span>
+                  </button>
+                </div>
+
+                {/* Three Compact Product-Benefit Indicators */}
+                <div className="pt-6 border-t border-black/5 dark:border-white/10 space-y-3">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 block">
+                    Operational Advantages
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    {product.benefits.map((benefit, idx) => (
+                      <div
+                        key={idx}
+                        className={`p-3 rounded-xl border text-left transition-all hover:border-[#2E8B45]/40 hover:-translate-y-0.5 duration-200 ${theme.benefitBg}`}
+                      >
+                        <div
+                          className="flex items-center gap-1.5 text-xs font-bold mb-1"
+                          style={{ color: product.primaryColor }}
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                          <span className="truncate">{benefit.title}</span>
+                        </div>
+                        <p className={`text-[11px] leading-snug line-clamp-2 ${theme.benefitDesc}`}>
+                          {benefit.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                </div>
+              );
+            })}
           </div>
 
+          {/* Right Column: Layered Dashboard Showcase (7 cols) */}
+          <div
+            className="lg:col-span-7 relative"
+            id={`panel-${activeProductId}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeProductId}`}
+          >
+            {/* Layered Showcase Wrapper with 3D Depth Shadow */}
+            <div
+              className={`rounded-2xl transition-all duration-300 ease-out transform ${theme.mockupShadow} ${
+                isTransitioning ? 'opacity-85 scale-[0.99] translate-y-1' : 'opacity-100 scale-100 translate-y-0'
+              }`}
+            >
+              <div className="grid">
+                {PRODUCT_ORDER.map((id) => (
+                  <div
+                    key={id}
+                    aria-hidden={id !== activeProductId}
+                    inert={id !== activeProductId}
+                    className={`[grid-area:1/1] ${id === activeProductId ? '' : 'invisible'}`}
+                  >
+                    {id === 'hr' && <HRDashboardMockup />}
+                    {id === 'fuel' && <FuelDashboardMockup />}
+                    {id === 'pos' && <POSDashboardMockup />}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Floating Top Contextual Companion Badge */}
+            <div
+              className={`hidden md:flex items-center gap-2 absolute -top-4 -right-4 px-3.5 py-1.5 rounded-full border shadow-xl backdrop-blur-md text-xs font-semibold z-20 transition-all ${
+                activeProductId === 'fuel'
+                  ? 'bg-white/95 dark:bg-[#0C1E30]/95 border-[#0284C7]/30 dark:border-[#0284C7]/50 text-[#0284C7] dark:text-[#38BDF8]'
+                  : activeProductId === 'pos'
+                  ? 'bg-white/95 dark:bg-[#18102B]/95 border-[#7756D9]/30 dark:border-[#7756D9]/50 text-[#7756D9] dark:text-[#A78BFA]'
+                  : 'bg-white/95 dark:bg-[#0D2115]/95 border-[#278642]/30 dark:border-[#278642]/50 text-[#278642] dark:text-[#65C94B]'
+              }`}
+            >
+              <Activity className="w-3.5 h-3.5" />
+              <span>
+                {activeProductId === 'hr' && 'Live Biometric LAN Bridge Active · 96.4% On Shift'}
+                {activeProductId === 'fuel' && 'Station Operations Active · Telemetry Calibrated'}
+                {activeProductId === 'pos' && 'Counter Station #01 · Real-time Recipe Depletion'}
+              </span>
+            </div>
+
+            {/* Floating Bottom Contextual Companion Card */}
+            <div
+              className="hidden md:flex items-center gap-3 absolute -bottom-5 -left-5 p-3.5 rounded-2xl border border-[#E4E9E1] dark:border-[#1E293B] shadow-xl backdrop-blur-md text-xs z-20 transition-all bg-white/95 dark:bg-[#111827]/95 text-[#17251D] dark:text-[#F8FAFC]"
+            >
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-white shrink-0 shadow-sm"
+                style={{ backgroundColor: currentProduct.primaryColor }}
+              >
+                {activeProductId === 'hr' ? (
+                  <Users className="w-4 h-4" />
+                ) : activeProductId === 'fuel' ? (
+                  <Fuel className="w-4 h-4" />
+                ) : (
+                  <ShoppingBag className="w-4 h-4" />
+                )}
+              </div>
+              <div>
+                <span className="font-bold text-xs block leading-tight text-[#0F172A] dark:text-[#F8FAFC]">
+                  {currentProduct.name} Engine
+                </span>
+                <span className="text-[11px] text-neutral-500 dark:text-neutral-400 block leading-tight mt-0.5">
+                  {currentProduct.availabilityNote}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* CENTRAL HERO PIECE: THE THREE-PRODUCT COMMAND DOCK        */}
+        {/* ========================================================= */}
+        <div className="mt-6 lg:mt-8">
           {/* 3 Prominent Product Cards / Command Rail */}
           <div
             role="tablist"
@@ -331,153 +471,6 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
                 </button>
               );
             })}
-          </div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 2-COLUMN SPLIT: STORYTELLING & REALISTIC DASHBOARD VIEW   */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Headline, Narrative, CTAs, Benefits (5 cols) */}
-          <div
-            className={`lg:col-span-5 space-y-6 transition-all duration-300 ease-out ${
-              isTransitioning ? 'opacity-70 translate-y-1' : 'opacity-100 translate-y-0'
-            }`}
-          >
-            {/* Dynamic Product Eyebrow */}
-            <div
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-semibold tracking-wide border uppercase transition-all duration-300 backdrop-blur-sm shadow-xs ${theme.eyebrowBg} ${theme.eyebrowColor}`}
-            >
-              <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span>{currentProduct.eyebrow}</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.08] transition-all duration-300 ${theme.headlineColor}`}
-              style={{ textWrap: 'balance' }}
-            >
-              {currentProduct.headline}
-            </h1>
-
-            {/* Description */}
-            <p className={`text-base sm:text-lg leading-relaxed transition-all duration-300 ${theme.descColor}`}>
-              {currentProduct.description}
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
-              <button
-                type="button"
-                onClick={() =>
-                  onExploreProduct
-                    ? onExploreProduct(activeProductId)
-                    : onSelectProduct(activeProductId)
-                }
-                className={`group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm transition-all active:scale-[0.98] whitespace-nowrap cursor-pointer ${theme.primaryBtn}`}
-              >
-                <span>{currentProduct.primaryCta}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-150" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onOpenDemo(activeProductId)}
-                className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold border transition-all hover:shadow-xs active:scale-[0.98] whitespace-nowrap cursor-pointer ${theme.secondaryBtn}`}
-              >
-                <Calendar className="w-4 h-4 opacity-75" />
-                <span>{currentProduct.secondaryCta}</span>
-              </button>
-            </div>
-
-            {/* Three Compact Product-Benefit Indicators */}
-            <div className="pt-6 border-t border-black/5 dark:border-white/10 space-y-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 block">
-                Operational Advantages
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                {currentProduct.benefits.map((benefit, idx) => (
-                  <div
-                    key={idx}
-                    className={`p-3 rounded-xl border text-left transition-all hover:border-[#2E8B45]/40 hover:-translate-y-0.5 duration-200 ${theme.benefitBg}`}
-                  >
-                    <div
-                      className="flex items-center gap-1.5 text-xs font-bold mb-1"
-                      style={{ color: currentProduct.primaryColor }}
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                      <span className="truncate">{benefit.title}</span>
-                    </div>
-                    <p className={`text-[11px] leading-snug line-clamp-2 ${theme.benefitDesc}`}>
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Layered Dashboard Showcase (7 cols) */}
-          <div
-            className="lg:col-span-7 relative"
-            id={`panel-${activeProductId}`}
-            role="tabpanel"
-            aria-labelledby={`tab-${activeProductId}`}
-          >
-            {/* Layered Showcase Wrapper with 3D Depth Shadow */}
-            <div
-              className={`rounded-2xl transition-all duration-300 ease-out transform ${theme.mockupShadow} ${
-                isTransitioning ? 'opacity-85 scale-[0.99] translate-y-1' : 'opacity-100 scale-100 translate-y-0'
-              }`}
-            >
-              {activeProductId === 'hr' && <HRDashboardMockup />}
-              {activeProductId === 'fuel' && <FuelDashboardMockup />}
-              {activeProductId === 'pos' && <POSDashboardMockup />}
-            </div>
-
-            {/* Floating Top Contextual Companion Badge */}
-            <div
-              className={`hidden md:flex items-center gap-2 absolute -top-4 -right-4 px-3.5 py-1.5 rounded-full border shadow-xl backdrop-blur-md text-xs font-semibold z-20 transition-all ${
-                activeProductId === 'fuel'
-                  ? 'bg-white/95 dark:bg-[#0C1E30]/95 border-[#0284C7]/30 dark:border-[#0284C7]/50 text-[#0284C7] dark:text-[#38BDF8]'
-                  : activeProductId === 'pos'
-                  ? 'bg-white/95 dark:bg-[#18102B]/95 border-[#7756D9]/30 dark:border-[#7756D9]/50 text-[#7756D9] dark:text-[#A78BFA]'
-                  : 'bg-white/95 dark:bg-[#0D2115]/95 border-[#278642]/30 dark:border-[#278642]/50 text-[#278642] dark:text-[#65C94B]'
-              }`}
-            >
-              <Activity className="w-3.5 h-3.5" />
-              <span>
-                {activeProductId === 'hr' && 'Live Biometric LAN Bridge Active · 96.4% On Shift'}
-                {activeProductId === 'fuel' && 'Station Operations Active · Telemetry Calibrated'}
-                {activeProductId === 'pos' && 'Counter Station #01 · Real-time Recipe Depletion'}
-              </span>
-            </div>
-
-            {/* Floating Bottom Contextual Companion Card */}
-            <div
-              className="hidden md:flex items-center gap-3 absolute -bottom-5 -left-5 p-3.5 rounded-2xl border border-[#E4E9E1] dark:border-[#1E293B] shadow-xl backdrop-blur-md text-xs z-20 transition-all bg-white/95 dark:bg-[#111827]/95 text-[#17251D] dark:text-[#F8FAFC]"
-            >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-white shrink-0 shadow-sm"
-                style={{ backgroundColor: currentProduct.primaryColor }}
-              >
-                {activeProductId === 'hr' ? (
-                  <Users className="w-4 h-4" />
-                ) : activeProductId === 'fuel' ? (
-                  <Fuel className="w-4 h-4" />
-                ) : (
-                  <ShoppingBag className="w-4 h-4" />
-                )}
-              </div>
-              <div>
-                <span className="font-bold text-xs block leading-tight text-[#0F172A] dark:text-[#F8FAFC]">
-                  {currentProduct.name} Engine
-                </span>
-                <span className="text-[11px] text-neutral-500 dark:text-neutral-400 block leading-tight mt-0.5">
-                  {currentProduct.availabilityNote}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

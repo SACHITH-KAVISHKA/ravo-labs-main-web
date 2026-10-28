@@ -29,13 +29,11 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ onSelectProduct, onOpenD
           {/* Brand Column (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center">
-              <div className="bg-white px-3 py-1.5 rounded-xl shadow-xs inline-flex items-center">
-                <img
-                  src="/assets/aistudio/WhatsApp_Image_2026-10-16_at_4.08.42_PM_0b82b704.jpeg"
-                  alt="Ravo Labs"
-                  className="h-7 sm:h-8 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/assets/aistudio/ravoLabs Green Bubble Logo.png"
+                alt="Ravo Labs"
+                className="h-10 sm:h-11 w-auto object-contain"
+              />
             </div>
 
             <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed max-w-sm">
