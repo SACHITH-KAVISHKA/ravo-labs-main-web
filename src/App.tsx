@@ -48,6 +48,10 @@ function AppContent() {
   };
 
   const handleExploreProduct = (id: ProductId) => {
+    if (id === 'hr') {
+      window.open('https://ravolabs.cloud/hr/login', '_blank');
+      return;
+    }
     setActiveProductId(id);
     const element = document.getElementById(`product-${id}`);
     if (element) {

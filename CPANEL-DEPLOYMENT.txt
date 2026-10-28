@@ -1,0 +1,62 @@
+DEPLOYMENT REQUEST — ravolabs.cloud (cPanel)
+=============================================
+
+GOAL:
+- Host a NEW static website at the root domain: https://ravolabs.cloud/
+- KEEP the existing Ravo HR project running at: https://ravolabs.cloud/hr
+- Both must work side by side without interfering with each other.
+
+WHAT I AM UPLOADING:
+- A pre-built static website (HTML, CSS, JS) from a "dist/" folder.
+- This is a React single-page application (SPA) that needs .htaccess rewrite rules.
+
+STEPS TO PERFORM IN cPANEL:
+----------------------------
+
+1. OPEN File Manager and navigate to public_html/
+
+2. DO NOT delete or modify the "hr/" folder — that is the existing Ravo HR project and must remain untouched.
+
+3. UPLOAD the contents of the "dist/" folder directly into public_html/
+   - Upload index.html (overwrite if one exists)
+   - Upload the assets/ folder
+   - Upload any other files from dist/
+   - DO NOT overwrite the hr/ folder
+
+   The resulting structure should be:
+
+   public_html/
+   ├── index.html          ← New main website
+   ├── assets/             ← New main website assets
+   ├── hr/                 ← Existing Ravo HR (untouched)
+   │   ├── index.html
+   │   └── ...
+
+4. CREATE or EDIT the file public_html/.htaccess with the following content:
+
+   <IfModule mod_rewrite.c>
+     RewriteEngine On
+     RewriteBase /
+
+     # Preserve existing /hr project — do not rewrite
+     RewriteRule ^hr(/.*)?$ - [L]
+
+     # Do not rewrite existing files or directories
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteCond %{REQUEST_FILENAME} !-d
+
+     # Route all other requests to index.html (React SPA)
+     RewriteRule ^ index.html [QSA,L]
+   </IfModule>
+
+5. VERIFY:
+   - https://ravolabs.cloud/       → Should load the new main website
+   - https://ravolabs.cloud/hr     → Should still load the existing Ravo HR project
+   - Clear browser cache if needed (Ctrl+Shift+R)
+
+IMPORTANT NOTES:
+- The .htaccess rule on line "RewriteRule ^hr(/.*)?$ - [L]" is critical.
+  It tells the server to leave all /hr requests alone so the existing
+  Ravo HR project keeps working exactly as before.
+- If the hr/ folder has its own .htaccess, that should remain untouched as well.
+- Make sure mod_rewrite is enabled on the server (it usually is by default on cPanel).
