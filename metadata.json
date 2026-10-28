@@ -1,0 +1,6 @@
+{
+  "name": "Ravo Labs — Premium Multi-Product Business Software",
+  "description": "Connected business software by Ravo Labs: Ravo HR for people operations, Ravo Fuel for fuel station management, and Ravo POS for bakeries, cafes, and restaurants.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

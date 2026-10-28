@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  
+  --color-ravo-deep: #10271D;
+  --color-ravo-brand: #2E8B45;
+  --color-ravo-bright: #65C94B;
+  --color-ravo-soft: #F6F8F3;
+  --color-ravo-text: #17251D;
+  --color-ravo-muted: #68736B;
+  --color-ravo-border: #E4E9E1;
+
+  --color-hr-accent: #278642;
+  --color-hr-highlight: #78C85A;
+  --color-hr-bg: #FFFFFF;
+  --color-hr-subtle: #F2F8F4;
+
+  --color-fuel-bg: #FFFFFF;
+  --color-fuel-subtle: #F0F7FF;
+  --color-fuel-card: #F8FAFC;
+  --color-fuel-accent: #0284C7;
+  --color-fuel-highlight: #38BDF8;
+
+  --color-pos-accent: #7756D9;
+  --color-pos-highlight: #A78BFA;
+  --color-pos-bg: #FFFFFF;
+  --color-pos-subtle: #F7F4FF;
+}
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html.dark body {
+  background-color: #0B0F17;
+  color: #F8FAFC;
+}
+
+/* Universal Accessible Focus Visible Ring for Keyboard Users */
+:focus-visible {
+  outline: 2px solid #2E8B45;
+  outline-offset: 2px;
+}
+
+/* Accessible focus outlines for brand sections */
+#product-fuel :focus-visible {
+  outline-color: #0284C7;
+}
+#product-pos :focus-visible {
+  outline-color: #7756D9;
+}
+
+/* Custom scrollbar for clean dashboard previews */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.4);
+}
+
+/* Pure Compositor Keyframe Animations */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInSlideUp 400ms var(--ease-out-expo) forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 350ms var(--ease-out-expo) forwards;
+}
+
+/* Stagger utilities for dashboard cards */
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+
+/* Scroll reveal utility (pure transform and opacity) */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive touch and tactile feedback */
+.touch-press {
+  transition: transform 120ms var(--ease-out-expo), box-shadow 120ms var(--ease-out-expo);
+}
+.touch-press:active {
+  transform: scale(0.98);
+}
+
+/* Accessible prefers-reduced-motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

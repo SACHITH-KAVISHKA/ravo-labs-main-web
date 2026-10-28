@@ -1,0 +1,1055 @@
+# MASTER PROMPT — RAVO LABS PREMIUM MULTI-PRODUCT WEBSITE
+
+## 1. YOUR ROLE
+
+Act as a world-class Senior UI/UX Designer, Creative Director, Senior Frontend Engineer, Motion Designer, Accessibility Specialist, and Conversion Optimization Expert.
+
+Design and implement a complete, premium, production-quality, responsive corporate website for **Ravo Labs**, a software company offering three principal business software products:
+
+1. Ravo HR — customizable Human Resource Management System (HRMS).
+2. Ravo Fuel — Fuel Station Management System.
+3. Ravo POS — Point-of-Sale System for bakeries, restaurants, cafés, and food businesses.
+
+This must be a complete, working website implementation, not a static mockup, a wireframe, a design description, or a collection of disconnected UI components.
+
+Build the actual application, run it in the preview environment, inspect the result, and fix visual, responsive, functional, and accessibility issues.
+
+## 2. EXISTING WEBSITE AND DESIGN REFERENCE
+
+Use these references:
+
+Existing website:
+https://ravo-labs.hashanchamantha.chatgpt.site/
+
+A three-page PDF reference has also been provided with this request. Inspect all three pages before implementation.
+
+Preserve the strongest elements of the existing Ravo Labs identity:
+- Clean, modern software-company branding.
+- Green Ravo Labs logo and wordmark.
+- Generous whitespace and restrained typography.
+- Rounded product preview cards.
+- Realistic software dashboard illustrations.
+- Clear product positioning.
+- Feature sections, pricing where appropriate, company information, and demo calls to action.
+- A dark footer that contrasts with the lighter page sections.
+
+However, substantially improve the homepage architecture to introduce all three main products equally.
+
+Do not simply reproduce the old website. Upgrade its visual quality, interactions, motion, information architecture, and product storytelling.
+
+Use the supplied website and PDF as the design reference, not as proof that every existing price, product status, feature, or claim is still correct. Make business content easy to update.
+
+## 3. PRIMARY OBJECTIVE
+
+Create a high-end software company website that immediately communicates:
+
+"Ravo Labs builds connected business software that makes everyday operations simpler."
+
+The homepage must clearly establish that Ravo HR, Ravo Fuel, and Ravo POS are the company's main products.
+
+Visitors must be able to:
+- Understand what each product does.
+- Preview all three products directly in the hero section.
+- Switch between product previews using animated interactions.
+- Explore each product's features.
+- Learn about Ravo Labs.
+- Request a demo or submit an enquiry.
+- Find contact information and social links.
+- Navigate easily on desktop, tablet, and mobile.
+
+The site should feel like a polished, established SaaS company with sophisticated interaction design, not a generic AI-generated template.
+
+## 4. BRAND AND VISUAL IDENTITY
+
+Company brand: Ravo Labs.
+
+Product naming:
+- Ravo HR
+- Ravo Fuel
+- Ravo POS
+
+Use the existing Ravo Labs logo if an accessible logo asset is provided. Otherwise, create a clean text-based wordmark with a small, custom abstract symbol. Do not invent an unrelated corporate logo.
+
+Create a consistent design system with separate product themes.
+
+### Ravo Labs corporate identity
+
+- Deep forest green: #10271D
+- Brand green: #2E8B45
+- Bright accent green: #65C94B
+- Soft background: #F6F8F3
+- White: #FFFFFF
+- Primary text: #17251D
+- Muted text: #68736B
+- Borders: #E4E9E1
+
+### Product theme A: Ravo HR
+
+- Primary background: white.
+- Secondary background: very light green.
+- Primary accent: #278642.
+- Highlight accent: #78C85A.
+- Dark text: #183124.
+- UI cards: white with subtle green-tinted shadows.
+- Atmosphere: calm, trustworthy, organized, human-centered, professional.
+
+### Product theme B: Ravo Fuel
+
+- Primary background: near-black, #101110.
+- Secondary background: #191C19.
+- Primary accent: #FF8A24.
+- Highlight accent: #FFB04F.
+- Primary text: #F5F5F0.
+- Secondary text: #B9BDB7.
+- UI cards: dark graphite with subtle orange borders and glows.
+- Atmosphere: precise, powerful, operational, industrial, reliable.
+
+### Product theme C: Ravo POS
+
+- Primary background: white.
+- Secondary background: #F7F4FF.
+- Primary accent: #7756D9.
+- Highlight accent: #A78BFA.
+- Primary text: #29213D.
+- UI cards: white with restrained purple-tinted shadows.
+- Atmosphere: fast, modern, friendly, premium, commerce-focused.
+
+Keep the main corporate brand consistent while allowing the active hero product to change the visual atmosphere.
+
+When switching products, transition the background, accent colors, product mockup, labels, and supporting content together.
+
+Avoid applying the same color treatment to every product.
+
+## 5. TYPOGRAPHY AND DESIGN SYSTEM
+
+Use a modern, highly legible font such as Inter, Manrope, or Plus Jakarta Sans.
+
+Use a clear type scale:
+- Large hero headline: approximately 56–76px on wide desktop screens.
+- Section headings: approximately 36–52px.
+- Card headings: approximately 20–26px.
+- Body text: approximately 15–18px.
+- Labels and metadata: approximately 12–14px.
+
+Use responsive typography with clamp() and sensible maximum widths.
+
+Create reusable design tokens for:
+- Typography.
+- Colors.
+- Spacing.
+- Border radii.
+- Shadows.
+- Container widths.
+- Animation durations.
+- Focus rings.
+- Responsive breakpoints.
+
+Use a consistent spacing scale, generous vertical whitespace, a centered content container, and carefully aligned grids.
+
+Prefer refined, editorial layouts over excessive rounded cards.
+
+Use subtle borders, layered surfaces, restrained gradients, and natural shadows.
+
+Avoid:
+- Generic template layouts.
+- Excessive glassmorphism.
+- Oversized glowing gradients everywhere.
+- Excessive pills and badges.
+- Random floating shapes without purpose.
+- Unnecessary visual clutter.
+- Excessive animation that makes text difficult to read.
+- Emoji as the main interface icon system.
+- Fake customer logos, fake testimonials, invented awards, or fabricated business statistics.
+
+## 6. WEBSITE STRUCTURE
+
+Build one complete, vertically scrollable homepage with these sections in this order:
+
+1. Announcement bar, optional and dismissible.
+2. Sticky navigation header.
+3. Interactive three-product hero showcase.
+4. Product overview and product selector.
+5. Why Ravo Labs / company value proposition.
+6. Individual Ravo HR, Ravo Fuel, and Ravo POS feature sections.
+7. How the products help different businesses.
+8. Company capabilities and approach.
+9. Product availability and roadmap.
+10. FAQ section.
+11. Contact and demo request section.
+12. Comprehensive footer.
+
+Use anchor links and smooth scrolling for ordinary section navigation.
+
+Do not make every section a modal. The main experience should be a normal website with a few purposeful overlays.
+
+## 7. NAVIGATION HEADER
+
+Create a refined sticky header.
+
+Desktop layout:
+- Left: Ravo Labs logo.
+- Center: Products, Solutions, About, FAQ.
+- Right: Contact Us and a prominent Book a Demo button.
+
+Use a white or softly translucent background on light sections. Use a suitable dark appearance over dark sections if needed.
+
+Interactions:
+- Subtle shadow or border after scrolling.
+- Animated underline on navigation hover.
+- Products dropdown or compact mega-menu with all three product names and their distinct accent colors.
+- Clear keyboard focus indicators.
+- Smooth mobile menu opening and closing.
+- Close the mobile menu after selecting a section.
+- Maintain sufficient contrast and touch-target sizes.
+
+Avoid a header that occupies too much vertical space.
+
+## 8. HERO SECTION — MOST IMPORTANT
+
+The hero must be the visual centerpiece of the website.
+
+Build a premium, asymmetric two-column layout on desktop.
+
+Left column:
+- Small animated brand eyebrow: "BUSINESS SOFTWARE BY RAVO LABS".
+- Dynamic product label.
+- Large headline.
+- Short supporting paragraph.
+- Primary call-to-action.
+- Secondary call-to-action.
+- Three compact product-benefit indicators.
+
+Right column:
+- A large, realistic product-interface showcase.
+- A layered desktop application mockup.
+- Smaller floating interface cards.
+- Subtle depth, parallax, lighting, and animated interface details.
+- A product switcher integrated into the showcase.
+
+Suggested hero content:
+
+### State 1 — Ravo HR
+
+Eyebrow: "RAVO HR · PEOPLE OPERATIONS"
+
+Headline:
+"Your people. Your processes. One connected HR system."
+
+Description:
+"Bring employee records, attendance, leave management, payroll preparation, and employee self-service together in a configurable HR platform designed around your business."
+
+Primary CTA: "Explore Ravo HR"
+
+Secondary CTA: "Book a Demo"
+
+Benefits:
+- Configurable workflows.
+- Connected employee records.
+- Clearer HR operations.
+
+### State 2 — Ravo Fuel
+
+Eyebrow: "RAVO FUEL · FUEL STATION MANAGEMENT"
+
+Headline:
+"Take control of every litre and every transaction."
+
+Description:
+"Bring fuel stock, tank measurements, pump readings, shift operations, sales reconciliation, and station reporting into a unified fuel management experience."
+
+Primary CTA: "Explore Ravo Fuel"
+
+Secondary CTA: "Discuss Your Requirements"
+
+Benefits:
+- Fuel inventory visibility.
+- Pump and shift reconciliation.
+- Station performance reporting.
+
+These are proposed product-positioning messages. Make each feature configurable in the product content data and do not imply that unbuilt functionality is already available.
+
+### State 3 — Ravo POS
+
+Eyebrow: "RAVO POS · SMARTER POINT OF SALE"
+
+Headline:
+"Serve faster. Sell smarter. Keep your business moving."
+
+Description:
+"Give bakeries, restaurants, cafés, and retail food businesses a clearer way to manage orders, billing, menus, stock, and daily sales."
+
+Primary CTA: "Explore Ravo POS"
+
+Secondary CTA: "Request a Demo"
+
+Benefits:
+- Faster order handling.
+- Clear sales visibility.
+- Connected stock management.
+
+These proposed messages must not be treated as proof of existing production capabilities.
+
+### Product switcher
+
+Provide three clearly identifiable selectors:
+- Ravo HR.
+- Ravo Fuel.
+- Ravo POS.
+
+Use segmented tabs, compact navigation cards, or a refined horizontal product rail.
+
+When a visitor selects a product:
+1. Update the active product.
+2. Transition the background and accent palette.
+3. Animate the headline and paragraph.
+4. Replace the product dashboard mockup.
+5. Update CTA labels and destination anchors.
+6. Update feature indicators.
+7. Update the URL hash to identify the active product when appropriate.
+8. Preserve keyboard accessibility and respect reduced-motion preferences.
+
+The selected product must remain obvious.
+
+Allow manual selection at any time.
+
+Optional autoplay may advance between products every 7–9 seconds, but it must:
+- Pause while the user interacts with the hero.
+- Pause when the page is hidden.
+- Stop when reduced motion is preferred.
+- Include a visible pause/play control if autoplay is enabled.
+- Never interfere with keyboard navigation.
+- Never reset the user's selection unexpectedly.
+
+Do not use three independent competing animations. The transition should feel like one coherent, coordinated movement.
+
+## 9. HIGH-QUALITY PRODUCT DASHBOARD MOCKUPS
+
+Create realistic, custom-built interface illustrations using React components, HTML, and CSS.
+
+Do not use a generic stock photo as the primary product showcase.
+
+The product previews must resemble real SaaS software and should contain legible, intentional interface elements.
+
+### Ravo HR dashboard
+
+Show a desktop HR dashboard with:
+- Sidebar navigation.
+- Employee overview.
+- Employee count card.
+- Attendance summary.
+- Leave requests awaiting approval.
+- Weekly attendance visualization.
+- Employee table with illustrative names.
+- Payroll preparation status.
+- A small leave approval or employee profile card.
+
+Use green indicators and white surfaces.
+
+### Ravo Fuel dashboard
+
+Show a dark fuel station dashboard with:
+- Sidebar navigation.
+- Station overview.
+- Fuel stock by tank.
+- Current tank levels.
+- Pump meter readings.
+- Shift sales summary.
+- Cash and card reconciliation.
+- Daily fuel sales chart.
+- Alerts for low stock or discrepancies.
+
+Use orange for highlights and alerts.
+
+All figures must be explicitly illustrative.
+
+### Ravo POS dashboard
+
+Show a POS interface with:
+- Menu/category sidebar.
+- Product grid.
+- Bakery and restaurant product examples.
+- Current order panel.
+- Item quantities.
+- Subtotal and total.
+- Payment method indicators.
+- Order status.
+- Small daily sales summary.
+
+Use purple accents and light surfaces.
+
+The preview should look like an actual product interface, not a decorative rectangle.
+
+Add small, restrained motion:
+- A subtle chart draw-in.
+- A status badge fading in.
+- A floating notification appearing.
+- A slight depth effect on dashboard layers.
+
+Animations must never compromise readability.
+
+Do not pretend these dashboard previews are connected to a live backend. Label them as illustrative previews if necessary.
+
+## 10. PRODUCT OVERVIEW SECTION
+
+Section eyebrow: "THE RAVO PRODUCT FAMILY"
+
+Heading:
+"Three focused systems. One vision for better business."
+
+Supporting text:
+"Ravo Labs develops practical software experiences for people operations, fuel station management, and food-service businesses."
+
+Create three large, visually distinct product cards.
+
+Each card must include:
+- Product name.
+- Distinct product icon.
+- Product-specific color treatment.
+- Short product description.
+- Three to five relevant feature labels.
+- A mini interface illustration.
+- Product availability status where known.
+- A clear Explore Product CTA.
+
+Ravo HR card: green and white.
+
+Ravo Fuel card: black and orange.
+
+Ravo POS card: white and purple.
+
+Use staggered layouts, subtle card elevation, and scroll-triggered entrance animations.
+
+On desktop, use a balanced three-column layout or an editorial arrangement with one larger featured card.
+
+On mobile, use a single-column stack. Do not force a cramped three-column layout.
+
+Selecting a card should navigate to the relevant product section and may update the hero product through a coordinated transition.
+
+## 11. INDIVIDUAL PRODUCT SECTIONS
+
+Create a dedicated, visually distinct feature section for each product.
+
+### Ravo HR — configurable human resources
+
+Position Ravo HR as a customizable HR management system that can serve companies in different industries.
+
+Describe potential capabilities:
+- Employee records and documents.
+- Organization structure and departments.
+- Configurable employee fields.
+- Attendance and fingerprint-device integrations.
+- Shift and attendance policies.
+- Leave types and approval workflows.
+- Salary structures and payroll preparation.
+- EPF, ETF, and APIT-related workflows where applicable.
+- Digital payslips.
+- Employee self-service.
+- Role-based access permissions.
+- Reports and dashboards.
+- Company-specific configuration.
+
+Important requirement: customization must be presented as a core product principle.
+
+Explain that company-specific settings may include terminology, departments, policies, approval chains, employee fields, and workflows, subject to actual implementation.
+
+Use a split-screen section with copy on one side and a realistic HR dashboard on the other.
+
+Include an interactive workflow demonstration with three steps:
+1. Configure company policies.
+2. Manage employee and attendance information.
+3. Review connected HR workflows.
+
+When a visitor selects a step, update the supporting interface preview and explanatory text.
+
+CTA: "Discuss Your HR Requirements"
+
+Do not claim that every integration, payroll calculation, or legal compliance capability is already implemented.
+
+### Ravo Fuel — fuel station management
+
+Position Ravo Fuel as a dedicated operational platform for fuel stations.
+
+Describe potential capabilities:
+- Fuel tank and inventory management.
+- Tank capacity and stock-level visibility.
+- Pump meter readings.
+- Shift opening and closing.
+- Fuel delivery recording.
+- Sales and stock reconciliation.
+- Cash and card transaction summaries.
+- Attendant and shift records.
+- Stock discrepancy alerts.
+- Daily and monthly reporting.
+- Multi-station visibility where supported.
+
+Design this section with a dark background, orange accent lighting, crisp data tables, and a powerful dashboard preview.
+
+Add a restrained animated tank-level visualization and a pump performance chart.
+
+Do not invent hardware integrations, real-time telemetry, payment integrations, or accounting integrations. Describe these as supported only when confirmed, or as potential integrations requiring verification.
+
+CTA: "Discuss Fuel Station Management"
+
+### Ravo POS — bakery and restaurant POS
+
+Position Ravo POS for:
+- Bakeries.
+- Restaurants.
+- Cafés.
+- Quick-service food businesses.
+- Small food retailers.
+
+Describe potential capabilities:
+- Product and menu management.
+- Order entry and billing.
+- Order modifications.
+- Item categories and pricing.
+- Sales summaries.
+- Inventory and stock tracking.
+- Product variants and add-ons.
+- Table or takeaway workflows where supported.
+- Kitchen order routing where supported.
+- Payment-method recording.
+- Day-end reporting.
+
+Use a light background with purple accents.
+
+Show a realistic product menu, current order panel, and checkout summary.
+
+Include a small interactive ordering demonstration where a user can add or remove illustrative items and see the order total update correctly.
+
+CTA: "Discuss POS for Your Business"
+
+All sample data must be fictional, clearly illustrative, and calculated consistently.
+
+## 12. COMPANY VALUE PROPOSITION
+
+Create a section that explains why Ravo Labs exists.
+
+Suggested heading:
+"Technology built around the way businesses actually work."
+
+Supporting content:
+"Every business has its own processes. Ravo Labs focuses on practical software that helps teams organize information, improve visibility, and manage everyday work with greater clarity."
+
+Show three value pillars:
+
+1. Designed around real operations.
+2. Connected information and clearer workflows.
+3. Flexible foundations for business growth.
+
+Use a sophisticated layout with subtle graphic elements and small animated icons.
+
+Do not invent company founding dates, employee counts, client counts, certifications, customer logos, or awards.
+
+## 13. HOW IT WORKS
+
+Show a clear, animated three-step overview:
+
+01 — Understand your workflow.
+Learn about the company's operations, requirements, and existing processes.
+
+02 — Configure the solution.
+Identify the relevant product, workflows, settings, and integrations.
+
+03 — Support your operations.
+Help the business understand the solution and its intended workflows.
+
+Make it clear that implementation, configuration, onboarding, and integrations depend on the selected product and agreed scope.
+
+Use connected lines, numbered steps, and a progress indicator.
+
+On mobile, convert the horizontal timeline into a vertical sequence.
+
+## 14. PRODUCT STATUS AND ROADMAP
+
+Clearly distinguish between:
+- Available.
+- Available for guided demonstration.
+- In development.
+- Planned.
+- Future concept.
+
+Never claim a product is production-ready unless this has been confirmed.
+
+Do not silently reuse the old website's pricing or product statuses as current facts.
+
+Store product availability in a centralized product data configuration so the company can update it without rewriting the layout.
+
+If the exact status is unknown, use a neutral label such as "Contact us for current availability."
+
+Make Ravo HR, Ravo Fuel, and Ravo POS equally visible as the main product family.
+
+Do not introduce Ravo Finance or additional products as primary offerings unless explicitly requested.
+
+## 15. CONTACT AND DEMO REQUEST SECTION
+
+Create a visually striking conversion section.
+
+Suggested heading:
+"Let's find the right Ravo solution for your business."
+
+Supporting text:
+"Tell us about your business and what you want to improve. Our team can help you explore the most relevant product."
+
+Provide two clear options:
+- Request a Demo.
+- Contact Ravo Labs.
+
+The demo form should contain:
+- Full name.
+- Company name.
+- Work email.
+- Phone number, optional.
+- Product of interest: Ravo HR, Ravo Fuel, Ravo POS, or Not Sure.
+- Industry.
+- Company or team size.
+- Message or requirements.
+- Consent checkbox where appropriate.
+
+Form behavior:
+- Clear labels and accessible validation.
+- Inline error messages.
+- Loading state.
+- Success confirmation only after successful submission.
+- Error state if submission fails.
+- Prevent duplicate submissions.
+- Preserve valid user input after recoverable errors.
+
+Architecture:
+Create a reusable form component and a dedicated submission service.
+
+If no email service, CRM, or backend has been configured, use a clearly identified demo mode. Do not falsely claim that an enquiry has been sent.
+
+Make the contact details, recipient address, and integration settings configurable.
+
+Do not expose API keys or secrets in client-side code.
+
+## 16. FAQ SECTION
+
+Create a clean accordion with accessible expand/collapse controls.
+
+Suggested questions:
+- What is Ravo Labs?
+- Which products does Ravo Labs offer?
+- Can Ravo HR be customized for our company?
+- Is Ravo Fuel suitable for our fuel station?
+- Can Ravo POS support a bakery or restaurant?
+- Can we request a product demonstration?
+- Are integrations available?
+- How can we discuss pricing?
+- How does implementation work?
+
+Provide concise, accurate answers.
+
+Avoid promises about availability, integrations, pricing, or support commitments that have not been confirmed.
+
+Allow multiple FAQ items to open or use a single-open accordion consistently.
+
+## 17. FOOTER
+
+Create a premium dark forest-green footer.
+
+Include:
+- Ravo Labs logo.
+- Short company description.
+- Product links.
+- Company links.
+- Contact details.
+- Email and phone placeholders until confirmed.
+- Social links only when real URLs are supplied.
+- Privacy Policy.
+- Terms and Conditions.
+- Copyright statement.
+
+Use a structured multi-column layout on desktop and an accessible stacked layout on mobile.
+
+Do not invent contact details, social profiles, legal URLs, or a registered company address.
+
+## 18. MODAL, OVERLAY, AND ROUTING RULES
+
+Use overlays only when they make a workflow easier.
+
+Appropriate overlays include:
+- Mobile navigation.
+- Demo request dialog, if appropriate.
+- A larger product preview.
+- Small contextual information panels.
+
+Do not make the whole site dependent on modals.
+
+Every modal must:
+- Have an accessible dialog name.
+- Use role="dialog" and aria-modal="true" where appropriate.
+- Reference its title using aria-labelledby.
+- Move keyboard focus into the dialog when opened.
+- Trap keyboard focus inside the dialog.
+- Close with Escape unless the operation genuinely requires otherwise.
+- Provide a clearly visible close button.
+- Restore focus to the triggering element.
+- Lock background scrolling while open.
+- Support backdrop dismissal where safe.
+- Preserve underlying page state and scroll position.
+- Use appropriate mobile full-screen or bottom-sheet behavior.
+- Avoid nested modals.
+
+Do not use an ordinary overlay to replace normal navigation to a meaningful product page.
+
+Browser history and deep links:
+- Use real, meaningful routes for product detail pages if separate pages are implemented.
+- If the hero product selection is represented in the URL, support direct links and browser Back/Forward navigation.
+- Keep the active selection synchronized with the URL.
+- Avoid creating unnecessary history entries for every tiny animation.
+- Restore scroll position correctly when navigating Back.
+- Ensure direct navigation and refresh work.
+
+Suggested routes:
+- /
+- /products/hr
+- /products/fuel
+- /products/pos
+- /about
+- /contact
+- /privacy
+- /terms
+
+If building a single-page site, use valid anchor links and a consistent hash strategy rather than pretending these routes exist.
+
+## 19. ADVANCED MOTION DESIGN
+
+Motion must make the interface feel premium and responsive, not chaotic.
+
+Use a deliberate motion system with:
+- Short micro-interactions: approximately 120–200ms.
+- UI state transitions: approximately 180–300ms.
+- Section entrance transitions: approximately 400–700ms.
+- Hero product transitions: approximately 350–650ms.
+
+Use cubic-bezier easing curves with natural acceleration and deceleration.
+
+Recommended motion techniques:
+- Text reveal using opacity and modest vertical translation.
+- Product preview crossfades and coordinated position changes.
+- Slight scale transitions on the hero dashboard.
+- Staggered entrance of dashboard cards.
+- Subtle background color interpolation between product themes.
+- Animated tab indicators.
+- Button hover and press feedback.
+- Gentle chart drawing.
+- Scroll-triggered section reveals.
+- Subtle depth movement between dashboard layers.
+- Animated SVG line illustrations.
+- Small floating notification cards.
+- Smooth accordion expansion.
+- Carefully controlled parallax on large screens.
+
+Implementation preferences:
+- Use Framer Motion / Motion for React if compatible with the project.
+- Use CSS transitions for simpler state changes.
+- Use Lucide React for consistent interface icons.
+- Use CSS transforms and opacity for high-performance animation.
+- Use IntersectionObserver for viewport-triggered animation where useful.
+- Avoid animating expensive layout properties unnecessarily.
+- Clean up observers and event listeners.
+- Avoid multiple animation libraries with overlapping responsibilities.
+
+Do not use scroll hijacking.
+
+Do not lock users into long cinematic sequences.
+
+Do not require a user to wait for an animation before interacting.
+
+Do not animate every element continuously.
+
+Honor prefers-reduced-motion. When reduced motion is enabled, remove unnecessary parallax, autoplay, and large movement while preserving functional state changes.
+
+## 20. ICON SYSTEM
+
+Use Lucide React icons consistently.
+
+Suggested icon mappings:
+- Ravo HR: Users, UserRound, CalendarCheck, Clock, FileText, WalletCards.
+- Ravo Fuel: Fuel, Gauge, Droplets, ChartNoAxesCombined, ClipboardCheck, AlertTriangle.
+- Ravo POS: ShoppingBag, Receipt, Coffee, ChefHat, ShoppingCart, CreditCard.
+- Company: Building2, Workflow, ShieldCheck, Settings2.
+- Contact: Mail, Phone, MapPin.
+- Navigation: Menu, X, ArrowUpRight, ChevronDown.
+
+Use icons with consistent stroke weight, sizing, alignment, and accessible labels.
+
+Decorative icons should be hidden from assistive technologies when appropriate.
+
+Never substitute emoji for the main navigation or product icons.
+
+## 21. RESPONSIVE DESIGN
+
+Implement a mobile-first responsive system.
+
+Suggested breakpoints:
+- Small mobile: 320–479px.
+- Large mobile: 480–767px.
+- Tablet: 768–1023px.
+- Desktop: 1024–1439px.
+- Large desktop: 1440px and above.
+
+Desktop:
+- Spacious hero with two columns.
+- Large dashboard preview.
+- Refined multi-column grids.
+- Sophisticated transitions and restrained parallax.
+
+Tablet:
+- Reduce typography and dashboard scale.
+- Adjust grid columns.
+- Prevent dashboard overflow.
+- Maintain readable spacing.
+
+Mobile:
+- Stack hero copy and preview vertically.
+- Keep the primary CTA easy to find.
+- Use a compact horizontal product selector that can be scrolled or wrapped appropriately.
+- Simplify dashboard mockups without removing their essential content.
+- Make touch targets approximately 44 × 44 CSS pixels where practical.
+- Prevent horizontal overflow.
+- Use readable body text.
+- Stack feature cards.
+- Make navigation accessible.
+- Convert large tables to responsive cards or controlled horizontal scrolling.
+- Ensure forms fit within the viewport.
+- Use full-screen dialogs or bottom sheets when appropriate.
+- Avoid large, heavy animations that cause mobile jank.
+
+Test at widths of 320px, 375px, 430px, 768px, 1024px, 1440px, and 1920px.
+
+## 22. ACCESSIBILITY
+
+Target WCAG 2.2 AA where applicable.
+
+Implement:
+- Semantic HTML.
+- Logical heading hierarchy.
+- Keyboard-accessible navigation and product switching.
+- Visible focus indicators.
+- Sufficient text and control contrast.
+- Form labels and meaningful validation messages.
+- Accessible dialogs and accordions.
+- Appropriate ARIA only when needed.
+- Screen-reader-friendly product status indicators.
+- Meaningful link names.
+- Accessible charts with text summaries.
+- Reduced-motion support.
+- No keyboard traps outside intentionally managed dialogs.
+- No color-only indication of status.
+- Focus restoration after dialogs close.
+
+Ensure the product selector can be operated with a keyboard and communicates the selected state using suitable semantics.
+
+## 23. TECHNICAL IMPLEMENTATION
+
+Use:
+- React.
+- TypeScript.
+- Vite or the framework naturally supported by the current Google AI Studio project.
+- Modern CSS or Tailwind CSS, using one consistent styling approach.
+- Lucide React.
+- Motion for React if needed.
+- Reusable, modular components.
+
+Do not unnecessarily replace an existing working project structure if one has already been generated. Inspect the current files first and extend the project appropriately.
+
+Recommended components:
+- SiteHeader
+- MobileNavigation
+- ProductHero
+- ProductSelector
+- ProductDashboard
+- HRDashboardMockup
+- FuelDashboardMockup
+- POSDashboardMockup
+- ProductOverview
+- ProductFeatureSection
+- WorkflowDemo
+- CompanySection
+- ProductStatus
+- FAQAccordion
+- DemoRequestForm
+- SiteFooter
+
+Centralize product-specific content in a typed data configuration. The product name, description, accent colors, features, availability, dashboard content, and CTA labels must not be duplicated across unrelated components.
+
+Use a clear separation between:
+- Presentation components.
+- Product data.
+- Interactive state.
+- Navigation.
+- Form validation.
+- Form submission services.
+
+Requirements:
+- Strict and useful TypeScript types.
+- No unnecessary any types.
+- No duplicated components for identical UI patterns.
+- No monolithic single-file implementation.
+- No broken or placeholder imports.
+- No missing dependencies.
+- No exposed secrets.
+- No fake backend integrations.
+- No nonfunctional buttons.
+- No dead navigation links.
+- No console errors.
+- No horizontal overflow.
+- No unnecessary heavy dependencies.
+
+Use lightweight, CSS-built product illustrations wherever possible.
+
+Use image assets only when they genuinely improve the design. If custom visuals are needed, create appropriate original assets or CSS/SVG illustrations rather than relying on unavailable external images.
+
+## 24. FUNCTIONAL REQUIREMENTS
+
+Every visible interactive element must work.
+
+Implement:
+- Product switching.
+- Hero content transitions.
+- Responsive mobile navigation.
+- Navigation anchors or real routes.
+- FAQ expansion and collapse.
+- Interactive workflow steps.
+- Product card navigation.
+- Working illustrative POS cart calculations.
+- Modal open and close behavior if dialogs are used.
+- Keyboard support.
+- URL synchronization when required.
+- Contact form validation.
+- Clear loading, success, and error states.
+- Functional CTA links.
+- Scroll-to-section actions.
+- Pricing interactions only when real pricing data is supplied.
+
+For a demo-only implementation, explicitly separate working frontend interactions from services that require external configuration.
+
+Do not fabricate successful email delivery, database storage, payment processing, authentication, or CRM submissions.
+
+## 25. SEO AND PERFORMANCE
+
+Implement:
+- Appropriate page title.
+- Meta description.
+- Canonical URL configuration when the production domain is known.
+- Open Graph metadata.
+- Semantic page structure.
+- Descriptive link text.
+- Favicon using the supplied brand assets or a consistent temporary brand mark.
+- Appropriate image dimensions.
+- Lazy loading for noncritical images.
+- Font loading optimization.
+- Responsive image handling.
+- Code splitting when useful.
+- Reduced layout shift.
+- Efficient animation.
+- Accessible fallback content.
+
+Do not add misleading structured data, fabricated reviews, or unsupported product claims.
+
+Aim for strong Core Web Vitals and excellent Lighthouse performance, accessibility, SEO, and best-practices scores.
+
+Do not load large video backgrounds or complex 3D scenes unless there is a clear performance justification.
+
+## 26. CONTENT AND TRUST
+
+Use professional, concise English suitable for a modern B2B software company.
+
+Use consistent product naming:
+- Ravo Labs is the company.
+- Ravo HR is the HRMS product.
+- Ravo Fuel is the fuel station management product.
+- Ravo POS is the POS product.
+
+Do not invent:
+- Company contact details.
+- Product prices.
+- Customer testimonials.
+- Client counts.
+- Business partnerships.
+- Product availability.
+- Security certifications.
+- Compliance guarantees.
+- Integration partnerships.
+- Implementation timelines.
+
+Keep unknown facts in a central configuration and clearly identify what needs confirmation.
+
+The website must be credible even before all product details are finalized.
+
+## 27. IMPLEMENTATION WORKFLOW
+
+Follow this sequence:
+
+PHASE 1 — Inspect
+- Review the existing website and all provided reference pages.
+- Inspect the current application structure.
+- Identify reusable assets, branding, and content.
+- Create a concise implementation plan internally, then proceed with implementation.
+
+PHASE 2 — Foundation
+- Set up the design tokens.
+- Establish the typography, colors, containers, responsive grid, and reusable controls.
+- Build the navigation and overall page structure.
+
+PHASE 3 — Hero
+- Implement the three-product hero.
+- Build all three distinct dashboard mockups.
+- Implement the product selector.
+- Add coordinated transitions and keyboard behavior.
+- Verify the visual result before proceeding.
+
+PHASE 4 — Homepage
+- Implement the product overview.
+- Build all three individual product sections.
+- Add company information, workflow, FAQ, contact, and footer.
+
+PHASE 5 — Functionality
+- Connect navigation and buttons.
+- Implement interactions and form validation.
+- Implement the illustrative POS cart.
+- Implement overlay accessibility and URL synchronization where applicable.
+- Make all external-service dependencies explicit.
+
+PHASE 6 — Quality assurance
+- Run the app.
+- Inspect the actual browser preview.
+- Fix compilation errors and runtime errors.
+- Test the product selector.
+- Test every visible CTA.
+- Test keyboard navigation and dialog focus management.
+- Test reduced motion.
+- Test the listed responsive widths.
+- Check contrast and text overflow.
+- Remove broken links and unfinished UI.
+- Verify that no fake success messages are displayed.
+
+Do not stop after generating a plan or creating the first screen.
+
+## 28. FINAL QUALITY STANDARD
+
+The final result must feel like a premium, professionally art-directed SaaS company website.
+
+The first screen should immediately communicate Ravo Labs and its three products.
+
+The three products must be visually distinct while belonging to one coherent brand.
+
+The hero must be exceptional, interactive, polished, and responsive.
+
+The dashboard mockups must be believable and carefully composed.
+
+Animations must feel intentional, smooth, and technically sound.
+
+Every section must have a clear purpose.
+
+Every interactive control must perform its advertised action.
+
+The website must work on mobile, support keyboard navigation, respect reduced motion, and avoid inaccessible modal behavior.
+
+The final output must be the implemented website running in the preview environment, with its source code organized into maintainable components.
+
+**Start building the website now. Prioritize a complete, functional implementation and verify the actual result rather than returning only explanations or sample snippets.**
